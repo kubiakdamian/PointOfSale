@@ -17,6 +17,11 @@ public class BarCodeScanner {
     }
 
     public void scan(String barCode) {
+        if(barCode.equals("")){
+            deviceSystem.getLcdDisplay().print();
+            return;
+        }
+
         Optional<Product> product = productService.findByBarCode(barCode);
 
         if (product.isPresent()) {

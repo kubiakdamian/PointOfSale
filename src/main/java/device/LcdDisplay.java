@@ -10,4 +10,8 @@ public class LcdDisplay {
             System.out.println(product.getName() + " " + product.getPrice() + "zł");
         }
     }
+
+    void print(){
+        System.out.println("Invalid bar-code");
+    }
 }

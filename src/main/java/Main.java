@@ -8,5 +8,6 @@ public class Main {
 
         barCodeScanner.scan("874323904377");
         barCodeScanner.scan("23904377");
+        barCodeScanner.scan("");
     }
 }
