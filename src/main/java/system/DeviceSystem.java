@@ -38,7 +38,7 @@ public class DeviceSystem {
         SCANNED_PRODUCTS.clear();
     }
 
-    private BigDecimal calculateSumOfProducts() {
+    public BigDecimal calculateSumOfProducts() {
         BigDecimal price = new BigDecimal(0);
 
         for (Product product : DeviceSystem.SCANNED_PRODUCTS) {
