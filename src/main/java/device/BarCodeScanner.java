@@ -17,8 +17,8 @@ public class BarCodeScanner {
     }
 
     public void scan(String barCode) {
-        if(barCode.equals("")){
-            deviceSystem.getLcdDisplay().print();
+        if (barCode.equals("")) {
+            deviceSystem.getLcdDisplay().print("Invalid bar-code");
             return;
         }
 
@@ -27,7 +27,7 @@ public class BarCodeScanner {
         if (product.isPresent()) {
             deviceSystem.productScanned(product.get());
         } else {
-            deviceSystem.getLcdDisplay().print(null);
+            deviceSystem.getLcdDisplay().print("Product not found");
         }
     }
 }

@@ -2,16 +2,18 @@ package device;
 
 import model.Product;
 
+import java.math.BigDecimal;
+
 public class LcdDisplay {
     public void print(Product product) {
-        if(product == null){
-            System.out.println("Product not found");
-        } else{
-            System.out.println(product.getName() + " " + product.getPrice() + "zł");
-        }
+        System.out.println(product.getName() + " " + product.getPrice() + "zł" + "\n");
     }
 
-    void print(){
-        System.out.println("Invalid bar-code");
+    public void print(BigDecimal sum) {
+        System.out.println("SUM: " + sum + "zł" + "\n");
+    }
+
+    void print(String message) {
+        System.out.println(message + "\n");
     }
 }

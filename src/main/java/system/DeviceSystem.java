@@ -1,6 +1,7 @@
 package system;
 
 import device.LcdDisplay;
+import device.Printer;
 import lombok.Getter;
 import model.Product;
 
@@ -12,11 +13,13 @@ public class DeviceSystem {
     public static ArrayList<Product> PRODUCTS;
     public static ArrayList<Product> SCANNED_PRODUCTS;
     private final LcdDisplay lcdDisplay;
+    private final Printer printer;
 
     public DeviceSystem() {
         PRODUCTS = new ArrayList<>();
         SCANNED_PRODUCTS = new ArrayList<>();
         lcdDisplay = new LcdDisplay();
+        printer = new Printer();
         createSampleProducts();
     }
 
@@ -24,6 +27,25 @@ public class DeviceSystem {
         lcdDisplay.print(product);
 
         SCANNED_PRODUCTS.add(product);
+    }
+
+    public void exit() {
+        BigDecimal sum = calculateSumOfProducts();
+
+        printer.print(sum);
+        lcdDisplay.print(sum);
+
+        SCANNED_PRODUCTS.clear();
+    }
+
+    private BigDecimal calculateSumOfProducts() {
+        BigDecimal price = new BigDecimal(0);
+
+        for (Product product : DeviceSystem.SCANNED_PRODUCTS) {
+            price = price.add(product.getPrice());
+        }
+
+        return price;
     }
 
     private static void createSampleProducts() {
