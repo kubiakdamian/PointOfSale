@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class ProductService {
     public Optional<Product> findByBarCode(String barCode) {
-        for (Product product : DeviceSystem.PRODUCTS) {
+        for (Product product : DeviceSystem.getProducts()) {
             if (product.getBarCode().equals(barCode)) {
                 return Optional.of(product);
             }

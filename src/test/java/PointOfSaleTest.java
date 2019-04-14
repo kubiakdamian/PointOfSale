@@ -31,7 +31,7 @@ class PointOfSaleTest {
 
     @Test
     void systemShouldContainProducts() {
-        assertTrue(DeviceSystem.PRODUCTS.size() > 0);
+        assertTrue(DeviceSystem.getProducts().size() > 0);
     }
 
     @Test
@@ -53,12 +53,12 @@ class PointOfSaleTest {
 
     @Test
     void scanningProductShouldAddItToScannedProducts() {
-        DeviceSystem.SCANNED_PRODUCTS.clear();
+        DeviceSystem.getScannedProducts().clear();
         Optional<Product> product = productService.findByBarCode("298754923999");
 
         barCodeScanner.scan("298754923999");
 
-        assertTrue(DeviceSystem.SCANNED_PRODUCTS.contains(product.get()));
+        assertTrue(DeviceSystem.getScannedProducts().contains(product.get()));
     }
 
     @Test
@@ -79,7 +79,7 @@ class PointOfSaleTest {
 
     @Test
     void deviceSystemShouldCalculateSumOfPurchasedProducts() {
-        DeviceSystem.SCANNED_PRODUCTS.clear();
+        DeviceSystem.getScannedProducts().clear();
 
         barCodeScanner.scan("874323904377");
         barCodeScanner.scan("947363465632");

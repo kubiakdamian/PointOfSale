@@ -19,7 +19,7 @@ class ExitInputTest {
         deviceSystem = new DeviceSystem();
         barCodeScanner = new BarCodeScanner();
 
-        DeviceSystem.SCANNED_PRODUCTS.clear();
+        DeviceSystem.getScannedProducts().clear();
 
         barCodeScanner.scan("874323904377");
         barCodeScanner.scan("325678548859");
@@ -46,7 +46,7 @@ class ExitInputTest {
 
     @Test
     void exitInputShouldClearScannedProductsArray() {
-        DeviceSystem.SCANNED_PRODUCTS.clear();
+        DeviceSystem.getScannedProducts().clear();
 
         barCodeScanner.scan("874323904377");
         barCodeScanner.scan("325678548859");
@@ -54,6 +54,6 @@ class ExitInputTest {
 
         deviceSystem.exit();
 
-        assertTrue(DeviceSystem.SCANNED_PRODUCTS.isEmpty());
+        assertTrue(DeviceSystem.getScannedProducts().isEmpty());
     }
 }
